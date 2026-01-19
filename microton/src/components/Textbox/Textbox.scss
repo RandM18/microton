@@ -1,0 +1,33 @@
+.textbox {
+
+    &__input {
+        appearance: none;
+        background-color: transparent;
+        color: #fff;
+        padding: 2px 4px;
+        border: none;
+        width: auto;
+        cursor: pointer;
+        outline: none;
+
+
+        &[type="number"] {
+            width: 30px;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                appearance: none;
+                margin: 0;
+            }
+        }
+
+        &[type="time"] {
+            &::-webkit-calendar-picker-indicator {
+                filter: invert(100%);
+            }
+        }
+    }
+
+
+
+}

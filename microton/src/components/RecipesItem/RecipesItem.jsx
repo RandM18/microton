@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
 import Table from "../Table/Table";
 import "./RecipesItem.scss";
-export default ({ id, poster, title, index, onMoveUp, onMoveDown, total }) => {
+export default ({ id, poster, title, data, index, onMoveUp, onMoveDown, total }) => {
   return (
     <div
       className='recipesItem'
@@ -19,7 +19,7 @@ export default ({ id, poster, title, index, onMoveUp, onMoveDown, total }) => {
       </div>
 
       <div className='recipesItem__body'>
-        <Table />
+        <Table data={data} />
       </div>
       <div className='recipesItem__aside'>
         <Button label='В избранное'>★</Button>

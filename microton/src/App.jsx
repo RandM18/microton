@@ -6,9 +6,10 @@ import RecipesList from "./components/RecipesList/RecipesList";
 import "./App.scss";
 
 function App() {
+  const { recipes, setRecipes } = useRecipes();
   const RecipesFileLoader = () => {
     const inputRef = useRef(null);
-    const { setRecipes } = useRecipes();
+
     const handleButtonClick = () => inputRef.current?.click();
     const handleFileChange = async (event) => {
       const file = event.target.files?.[0];
@@ -24,26 +25,13 @@ function App() {
   };
 
   const saveToTxt = () => {
-    // 1) что именно писать в txt:
-    // вариант A: JSON (самый простой и без потерь)
-    const text = JSON.stringify(r, null, 2);
-
     // вариант B: “человекочитаемо” (раскомментируйте если нужно)
-    // const text = r
-    //   .map((x) =>
-    //     [
-    //       `id: ${x.id}`,
-    //       `title: ${x.title}`,
-    //       `poster: ${x.poster}`,
-    //       `temp: ${x.temp}`,
-    //       `h1: ${x.h1}`,
-    //       `m1: ${x.m1}`,
-    //       `c1: ${x.c1}`,
-    //       `v1: ${x.v1}`,
-    //       "----",
-    //     ].join("\n")
-    //   )
-    //   .join("\n");
+    const text = recipes
+      .map(
+        (x, index) =>
+          `str${index} rt${x.data.rt} m1${x.data.m1}  s1${x.data.s1} c1${x.data.c1} v1${x.data.v1}  m2${x.data.m2}  s2${x.data.s2}  c2${x.data.c2} v2${x.data.v2}  m3${x.data.m3}  s3${x.data.s3}  c3${x.data.c3} v3${x.data.v3}  m4${x.data.m4}  s4${x.data.s4}  c4${x.data.c4} v4${x.data.v4}  k${x.poster}${x.title}`,
+      )
+      .join("\n");
 
     const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);

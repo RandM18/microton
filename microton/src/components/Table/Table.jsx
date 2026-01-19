@@ -1,9 +1,7 @@
-import { useState } from "react";
-import "./Table.scss";
 import Textbox from "../Textbox/Textbox";
+import "./Table.scss";
 
-export default () => {
-  const [temp, setTemp] = useState(0);
+export default ({ data }) => {
   return (
     <table
       className='table'
@@ -23,42 +21,31 @@ export default () => {
           <td>1</td>
           <td>
             <Textbox
-              defaultValue='0'
+              defaultValue={data.rt}
               max='300'
               name='temp'
               after='°C'
             />
-            {/* <input
-              type='text'
-              placeholder='C'
-              name='t1'
-              value={temp}
-              onChange={(e) => {
-                const raw = e.target.value;
-                if (raw === "") return; // keep current; or setBoth(0) if preferred
-                setTemp(Number(raw));
-              }}
-            /> */}
           </td>
           <td>
             <input
               type='time'
               name='t1'
+              className='textbox__input'
+              defaultValue={`${data.m1}:${data.s1}`}
             />
           </td>
           <td>
-            {" "}
             <Textbox
-              defaultValue='0'
+              defaultValue={data.c1}
               max='300'
               name='c1'
               after='%'
             />
           </td>
           <td>
-            {" "}
             <Textbox
-              defaultValue='0'
+              defaultValue={data.v1}
               max='300'
               name='v1'
               after='%'
@@ -67,24 +54,87 @@ export default () => {
         </tr>
         <tr>
           <td>2</td>
-          <td className='disabled'>{temp}</td>
-          <td>00:15</td>
-          <td>70%</td>
-          <td>90%</td>
+          <td className='disabled'>{data.rt}</td>
+          <td>
+            <input
+              type='time'
+              name='t2'
+              className='textbox__input'
+              defaultValue={`${data.m2}:${data.s2}`}
+            />
+          </td>
+          <td>
+            <Textbox
+              defaultValue={data.c2}
+              max='300'
+              name='c2'
+              after='%'
+            />
+          </td>
+          <td>
+            <Textbox
+              defaultValue={data.v2}
+              max='300'
+              name='v2'
+              after='%'
+            />
+          </td>
         </tr>
         <tr>
           <td>3</td>
-          <td className='disabled'>{temp}</td>
-          <td>00:15</td>
-          <td>70%</td>
-          <td>90%</td>
+          <td className='disabled'>{data.rt}</td>
+          <td>
+            <input
+              type='time'
+              name='t3'
+              className='textbox__input'
+              defaultValue={`${data.m3}:${data.s3}`}
+            />
+          </td>
+          <td>
+            <Textbox
+              defaultValue={data.c3}
+              max='300'
+              name='c3'
+              after='%'
+            />
+          </td>
+          <td>
+            <Textbox
+              defaultValue={data.v3}
+              max='300'
+              name='v3'
+              after='%'
+            />
+          </td>
         </tr>
         <tr>
           <td>4</td>
-          <td className='disabled'>{temp}</td>
-          <td>00:15</td>
-          <td>70%</td>
-          <td>90%</td>
+          <td className='disabled'>{data.rt}</td>
+          <td>
+            <input
+              type='time'
+              name='t4'
+              className='textbox__input'
+              defaultValue={`${data.m4}:${data.s4}`}
+            />
+          </td>
+          <td>
+            <Textbox
+              defaultValue={data.c4}
+              max='300'
+              name='c4'
+              after='%'
+            />
+          </td>
+          <td>
+            <Textbox
+              defaultValue={data.v4}
+              max='300'
+              name='v4'
+              after='%'
+            />
+          </td>
         </tr>
       </tbody>
     </table>

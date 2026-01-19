@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Textbox.scss";
 
 const Textbox = ({ defaultValue, max, id, name, disabled, after }) => {
   const [val, setVal] = useState(defaultValue, 0, max);
