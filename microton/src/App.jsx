@@ -1,12 +1,28 @@
-import { useState } from "react";
-// import reactLogo from './assets/react.svg'
-import viteLogo from "/vite.svg";
-import "./App.scss";
+import { useRef } from "react";
+import { useRecipes } from "./context/RecipesContext";
 import Logo from "./components/Logo/Logo";
 import Button from "./components/Button/Button";
 import RecipesList from "./components/RecipesList/RecipesList";
+import "./App.scss";
 
 function App() {
+  const RecipesFileLoader = () => {
+    const inputRef = useRef(null);
+    const { setRecipes } = useRecipes();
+    const handleButtonClick = () => inputRef.current?.click();
+    const handleFileChange = async (event) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      const text = await file.text();
+      try {
+        const recipes = JSON.parse(text);
+        setRecipes(recipes);
+      } catch {
+        alert("Не удалось распарсить файл! Ожидается JSON-массив рецептов.");
+      }
+    };
+  };
+
   const saveToTxt = () => {
     // 1) что именно писать в txt:
     // вариант A: JSON (самый простой и без потерь)
@@ -58,7 +74,10 @@ function App() {
               className='header__tools'
               aria-label='Действия с файлами'
             >
-              <Button label='Открыть recepty.txt'>
+              <Button
+                label='Открыть recepty.txt'
+                onClick={() => RecipesFileLoader()}
+              >
                 <svg
                   width='18'
                   height='18'

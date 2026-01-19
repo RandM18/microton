@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRecipes } from "../../context/RecipesContext";
 import RecipesItem from "../RecipesItem/RecipesItem";
 import "./RecipesList.scss";
 
@@ -11,30 +12,26 @@ function moveItem(arr, from, to) {
 }
 
 export default () => {
-  const [recipesList, setRecipesList] = useState([
-    { id: "1", poster: "poster.jpeg", title: "Пицца римская" },
-    { id: "2", poster: "poster.jpeg", title: "Пицца римская 2" },
-    { id: "3", poster: "poster.jpeg", title: "Пицца римская 3" },
-    { id: "4", poster: "poster.jpeg", title: "Пицца римская 4" },
-  ]);
+  const { recipes, setRecipes } = useRecipes();
+  const size = recipes.length;
   const moveUp = (index) => {
-    setRecipesList((prev) => moveItem(prev, index, index - 1));
+    setRecipes((prev) => moveItem(prev, index, index - 1));
   };
 
   const moveDown = (index) => {
-    setRecipesList((prev) => moveItem(prev, index, index + 1));
+    setRecipes((prev) => moveItem(prev, index, index + 1));
   };
   return (
     <div className='recipesList'>
       <div className='recipesList__inner container'>
-        {recipesList.map((item, index) => (
+        {recipes.map((item, index) => (
           <RecipesItem
             key={item.id}
             {...item}
             index={index}
             onMoveUp={() => moveUp(index)}
             onMoveDown={() => moveDown(index)}
-            total={recipesList.length}
+            total={size}
           />
         ))}
       </div>
