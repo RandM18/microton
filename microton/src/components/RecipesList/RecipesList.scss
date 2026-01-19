@@ -1,0 +1,9 @@
+.recipesList {
+    padding-block: 60px;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+}

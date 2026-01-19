@@ -1,0 +1,21 @@
+.logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.0;
+    align-items: flex-end;
+    letter-spacing: .06em;
+    font-weight: 800;
+    font-size: 22px;
+    text-transform: uppercase;
+    opacity: .95;
+
+    small {
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .12em;
+        color: var(--muted2);
+        margin-top: 2px;
+        text-transform: none;
+    }
+}

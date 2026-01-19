@@ -1,0 +1,77 @@
+:root {
+  --bg0: #0b0e12;
+  --bg1: #111823;
+  --panel: #141c27;
+  --panel2: #0f1621;
+  --stroke: #2a3646;
+  --stroke2: #36455a;
+  --text: #e8eef7;
+  --muted: #9fb0c4;
+  --muted2: #6f839b;
+  --accent: #e8cc53;
+  --danger: #ff5a66;
+  --ok: #7bd88f;
+  --shadow: 0 20px 60px rgba(0, 0, 0, .55);
+  --radius: 16px;
+  --radius2: 12px;
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(1200px 700px at 20% -10%, #1d2740 0%, transparent 65%),
+    radial-gradient(900px 650px at 95% 5%, #1a2a2a 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+}
+
+#root {
+  min-height: 100%;
+}
+
+.app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px 15px;
+}
+
+.header {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, 0));
+  // border-bottom: 1px solid rgba(255, 255, 255, .06);
+  border-bottom: 1px solid var(--accent);
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-block: 38px;
+  }
+
+  &__tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__logo {}
+}

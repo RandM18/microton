@@ -1,0 +1,26 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        th {
+            padding: 4px 4px 20px 4px;
+        }
+    }
+
+    tbody {
+        tr {
+            border: 1px solid var(--stroke);
+        }
+
+        td {
+            padding: 6px;
+            text-align: center;
+
+            &.disabled {
+                color: var(--muted2);
+                pointer-events: none;
+            }
+        }
+    }
+}
