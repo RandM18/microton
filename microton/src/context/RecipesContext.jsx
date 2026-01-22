@@ -38,11 +38,12 @@ export function RecipesProvider({ children }) {
     v4: "90",
   };
   const [recipes, setRecipes] = useState([
-    { id: "1", poster: "poster.jpeg", title: "Пицца римская", data: tableData },
-    { id: "2", poster: "poster.jpeg", title: "Пицца римская 2", data: tableData },
-    { id: "3", poster: "poster.jpeg", title: "Пицца римская 3", data: tableData },
-    { id: "4", poster: "poster.jpeg", title: "Пицца римская 4", data: tableData },
+    { id: "1", poster: "poster.jpeg", title: "Пицца римская", data: tableData, favorite: 1 },
+    { id: "2", poster: "poster.jpeg", title: "Пицца римская 2", data: tableData, favorite: 0 },
+    { id: "3", poster: "poster.jpeg", title: "Пицца римская 3", data: tableData, favorite: 1 },
+    { id: "4", poster: "poster.jpeg", title: "Пицца римская 4", data: tableData, favorite: 0 },
   ]);
+
   const recipesAdd = () => {
     setRecipes([
       ...recipes,
@@ -54,5 +55,13 @@ export function RecipesProvider({ children }) {
       },
     ]);
   };
-  return <RecipesContext.Provider value={{ recipes, setRecipes, moveItem, recipesAdd }}>{children}</RecipesContext.Provider>;
+  const recipesRemove = (idx) => {
+    if (confirm("Вы уверены, что хотите удалить рецепт?")) {
+      setRecipes(recipes.filter((recipe, index) => index !== idx));
+    }
+  };
+  const changeFavorite = (ind) => {
+    setRecipes(recipes.map((recipe, index) => (index === ind ? { ...recipe, favorite: recipe.favorite === 1 ? 0 : 1 } : recipe)));
+  };
+  return <RecipesContext.Provider value={{ recipes, setRecipes, moveItem, recipesAdd, recipesRemove, changeFavorite }}>{children}</RecipesContext.Provider>;
 }

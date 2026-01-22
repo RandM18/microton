@@ -1,11 +1,11 @@
 import Button from "../Button/Button";
 import Table from "../Table/Table";
 import "./RecipesItem.scss";
-export default ({ id, poster, title, data, index, onMoveUp, onMoveDown, total }) => {
+export default ({ id, poster, title, data, favorite, index, onMoveUp, onMoveDown, onDelete, onFavorite, total }) => {
   return (
     <div
       className='recipesItem'
-      aria-label='Рецепт 1'
+      aria-label={title}
     >
       <div className='recipesItem__info'>
         <div className='recipesItem__poster'>
@@ -22,8 +22,19 @@ export default ({ id, poster, title, data, index, onMoveUp, onMoveDown, total })
         <Table data={data} />
       </div>
       <div className='recipesItem__aside'>
-        <Button label='В избранное'>★</Button>
-        <Button label='Удалить рецепт'>🗑</Button>
+        <Button
+          label='В избранное'
+          onClick={onFavorite}
+          className={favorite ? "is-active" : ""}
+        >
+          ★
+        </Button>
+        <Button
+          label='Удалить рецепт'
+          onClick={onDelete}
+        >
+          🗑
+        </Button>
         <div className='divider'></div>
         <Button
           label='Переместить вверх'

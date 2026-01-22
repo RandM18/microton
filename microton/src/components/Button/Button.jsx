@@ -3,7 +3,7 @@ export default (props) => {
   const { className, label, children, onClick, disabled } = props;
   return (
     <button
-      className='button'
+      className={`button ${className}`}
       title={label}
       aria-label={label}
       onClick={onClick}
